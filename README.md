@@ -2,7 +2,76 @@
 
 This project implements multiple methods to encode depth maps (z-values) into RGB images using different color spaces and techniques. These encodings enable efficient compression of depth data with common video codecs.
 
+
+## Depth-to-Color Encoding under YUV420p Compression
+
+### Why Encode Depth into RGB?
+
+We map depth values into RGB color images to leverage standard video compression (e.g., H.264).  
+This allows efficient depth video storage and transmission using widely supported codecs.
+
 ---
+
+### What is YUV420p Chroma Subsampling?
+
+YUV420p is a common pixel format used in video codecs like H.264. It reduces color precision to save bandwidth.
+
+- **Y (luma/brightness):** stored for **every pixel**
+- **U and V (chroma/color):** shared across **2×2 blocks**  
+  → For every 4 pixels:  
+    • 4 Y values  
+    • 1 U and 1 V value  
+  → Chroma resolution is reduced **4:1**
+
+This can significantly affect any data encoded into color channels.
+
+---
+
+## HSV-RGB Encoding for Depth
+
+**How it works:**
+
+- Depth is mapped to **Hue** (0°–360° on the color wheel)
+- Saturation and Value are fixed or modulated
+- RGB is computed from HSV and saved as an image
+
+**Problem under YUV420p:**
+
+- Hue is stored in chroma channels (U/V), which are downsampled
+- Result: **Hue distortion, color bleeding, and depth reconstruction errors**
+- Saturation/value may also degrade if encoded in chroma
+
+**Conclusion:**  
+🔴 HSV encoding is **fragile** to compression — especially around sharp hue transitions.
+
+---
+
+## LUV-RGB Encoding for Depth
+
+**How it works:**
+
+- Depth is primarily encoded in **L\*** (lightness)
+- u\*, v\* (chrominance) encode additional info or orientation
+- RGB is derived from LUV using perceptually uniform transformation
+
+**Advantages under YUV420p:**
+
+- **L\*** maps to **luma (Y)** — preserved at full resolution ✅
+- u\*, v\* are downsampled — but depth-critical info stays in L\*
+- LUV is more resistant to compression due to uniformity
+
+**Conclusion:**  
+🟢 LUV encoding **preserves depth better** under YUV420p compression than HSV.
+
+---
+
+## Summary
+
+| Encoding | Robustness to YUV420p | Depth Channel Placement | Notes |
+|----------|------------------------|--------------------------|-------|
+| **HSV**  | ❌ Low                | Hue → Chroma (U/V)       | Easily distorted by chroma subsampling |
+| **LUV**  | ✅ High               | Lightness → Luma (Y)     | Depth survives compression much better |
+
 
 ## Files & Methods Overview
 
