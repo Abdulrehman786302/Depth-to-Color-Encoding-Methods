@@ -26,12 +26,16 @@ Install required Python packages:
 pip install numpy opencv-python
 ```
 
-## Output for Method 1 (depth_hsv_rgb.py)
+## Run for Method 1 (depth_hsv_rgb.py)
 
-When you run the first method, the following output files are generated:
+```bash
+python read_depth_methods.py 
+```
+and enter 1. When you run the first method, the following output files are generated:
 
 - A preview image:
-  - `1_output/preview_frame_0.png`
+
+![Preview Frame 0](1/preview_frame_0.png)
 
 - Two PLY files saved in the `ply_output` folder:
   - `frame_000000_decoded.ply`
