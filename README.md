@@ -113,7 +113,7 @@ and enter 1. When you run the first method, the following output files are gener
 
 > To view these `.ply` files, please open them with a 3D viewer such as [MeshLab](https://www.meshlab.net/) or [CloudCompare](https://www.danielgm.net/cc/).
 
-
+---
 ## Run for Method 2 (depth_luv_rgb.py)
 
 ```bash
@@ -129,7 +129,7 @@ and enter 2. When you run the first method, the following output files are gener
 - [frame_000000_decoded.ply](frame_000000_decoded.ply)
 - [frame_000000_original.ply](frame_000000_original.ply)
 
-
+---
 ## Run for Method 3 (depth_lab_rgb.py)
 
 ```bash
@@ -144,7 +144,7 @@ and enter 3. When you run the first method, the following output files are gener
 - Two PLY files saved in the `ply_output` folder:
 - [frame_000000_decoded.ply](decoded_depth.ply)
 - [frame_000000_original.ply](encoded_lab_color.ply)
-
+---
 ## Run for Method 4 (depth_mvd_roi.py)
 
 ```bash
@@ -159,7 +159,7 @@ and enter 4. When you run the first method, the following output files are gener
 - Two PLY files saved in the `ply_output` folder:
 - [frame_000000_decoded.ply](decoded_cloud.ply)
 - [frame_000000_original.ply](encoded_cloud.ply)
-
+---
 ## Run for Method 5 (depth_n_depth.py)
 
 ```bash
@@ -186,7 +186,7 @@ Published in: *Electronics 2024, 13(13), 2557*
 📄 [Read the Full Paper](https://doi.org/10.3390/electronics13132557)
 
 
-
+---
 
 ## Run for Method 6 (depth_hybrid_lab_hsv.py)
 
@@ -202,3 +202,4 @@ and enter 6. When you run the first method, the following output files are gener
 - Two PLY files saved in the `ply_output` folder: 
 - [frame_000000_decoded.ply](decoded_ffmpeg_000.ply) – decoded using FFmpeg
 - [frame_000000_original.ply](decoded_opencv_000.ply)– decoded using OpenCV
+---
