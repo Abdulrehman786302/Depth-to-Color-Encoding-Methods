@@ -38,7 +38,7 @@ and enter 1. When you run the first method, the following output files are gener
 ![Preview Frame 0](1/preview_frame_0.png)
 
 - Two PLY files saved in the `ply_output` folder:
-  - `frame_000000_decoded.ply`
-  - `frame_000000_original.ply`
+- [frame_000000_decoded.ply](ply_output/frame_000000_decoded.ply)
+- [frame_000000_original.ply](ply_output/frame_000000_original.ply)
 
 These files represent the encoded depth preview and the point clouds before and after decoding.
