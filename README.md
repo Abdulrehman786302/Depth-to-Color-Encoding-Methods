@@ -106,16 +106,15 @@ python read_depth_methods.py
 
 ![Preview Frame 0](5/plots/eval_plot_000000.png)
 
-reference_section = """
+
 ### Reference
 
-If you use or build upon this method, please cite the following paper:
-
-**N-Depth: Fast Depth Video Compression Using Learned Normal Representations**  
-[Jungbeom Lee, Seokjun Ahn, Min-Gyu Park, and In So Kweon]  
-*In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023*  
-[📄 Paper Link (CVF Open Access)](https://www.mdpi.com/2079-9292/13/13/2557)
-"""
+We use th paper to build this method:
+**N-DEPTH: Neural Depth Encoding for Compression-Resilient 3D Video Streaming**  
+Stephen Siemonsma and Tyler Bell  
+*Department of Electrical and Computer Engineering, University of Iowa*  
+Published in: *Electronics 2024, 13(13), 2557*    
+📄 [Read the Full Paper](https://doi.org/10.3390/electronics13132557)
 
 
 
