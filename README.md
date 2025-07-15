@@ -27,7 +27,7 @@ This can significantly affect any data encoded into color channels.
 
 ---
 
-## HSV-RGB Encoding for Depth
+### HSV-RGB Encoding for Depth
 
 **How it works:**
 
@@ -46,7 +46,7 @@ This can significantly affect any data encoded into color channels.
 
 ---
 
-## LUV-RGB Encoding for Depth
+### LUV-RGB Encoding for Depth
 
 **How it works:**
 
@@ -65,7 +65,7 @@ This can significantly affect any data encoded into color channels.
 
 ---
 
-## Summary
+### Summary
 
 | Encoding | Robustness to YUV420p | Depth Channel Placement | Notes |
 |----------|------------------------|--------------------------|-------|
