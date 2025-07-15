@@ -114,13 +114,10 @@ If you use or build upon this method, please cite the following paper:
 **N-Depth: Fast Depth Video Compression Using Learned Normal Representations**  
 [Jungbeom Lee, Seokjun Ahn, Min-Gyu Park, and In So Kweon]  
 *In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023*  
-[📄 Paper Link (CVF Open Access)](https://openaccess.thecvf.com/content/CVPR2023/html/Lee_N-Depth_Fast_Depth_Video_Compression_Using_Learned_Normal_Representations_CVPR_2023_paper.html)
+[📄 Paper Link (CVF Open Access)](https://www.mdpi.com/2079-9292/13/13/2557)
 """
 
-with open("README.md", "a", encoding="utf-8") as f:
-    f.write(reference_section)
 
-print("Reference section appended to README.md.")
 
 
 ## Run for Method 6 (depth_hybrid_lab_hsv.py)
