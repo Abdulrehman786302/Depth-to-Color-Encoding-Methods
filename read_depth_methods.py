@@ -12,12 +12,6 @@ methods = [
     "depth_hybrid_lab_hsv.py"
 ]
 
-print("Available encoding methods:")
-for i, method in enumerate(methods, 1):
-    print(f"  {i}. {method}")
-
-choice = input("\nEnter method numbers to run (e.g. 1,3,5 or 2-4). Press Enter to run ALL: ").strip()
-
 def parse_choices(s, max_num):
     selected = set()
     if not s:
@@ -41,44 +35,57 @@ def parse_choices(s, max_num):
                 pass
     return selected
 
-selected_indices = parse_choices(choice, len(methods))
-
-if not selected_indices:
-    print("No valid selections. Running all methods by default.")
-    selected_indices = set(range(1, len(methods) + 1))
-
-for i in sorted(selected_indices):
-    method_script = os.path.join(methods_folder, methods[i - 1])
-    if not os.path.exists(method_script):
-        print(f"[WARNING] Script '{method_script}' not found.")
-        continue
-
-    print(f"\n--- Running: {method_script} ---")
-
-    # For method 5 (depth_n_depth.py), ask for BATCH_SIZE and NUM_EPOCHS and pass as args
-    if i == 5:
+def input_int_with_default(prompt, default):
+    while True:
+        val = input(prompt).strip()
+        if val == "":
+            return default
         try:
-            batch_size = input("Enter BATCH_SIZE (default 4): ").strip()
-            if not batch_size:
-                batch_size = "4"
-            num_epochs = input("Enter NUM_EPOCHS (default 10): ").strip()
-            if not num_epochs:
-                num_epochs = "10"
-        except Exception:
-            batch_size = "4"
-            num_epochs = "10"
+            intval = int(val)
+            if intval > 0:
+                return intval
+            else:
+                print("Please enter a positive integer.")
+        except ValueError:
+            print("Invalid input. Please enter a positive integer or press Enter for default.")
+
+def main():
+    print("Available encoding methods:")
+    for i, method in enumerate(methods, 1):
+        print(f"  {i}. {method}")
+
+    choice = input("\nEnter method numbers to run (e.g. 1,3,5 or 2-4). Press Enter to run ALL: ").strip()
+    selected_indices = parse_choices(choice, len(methods))
+
+    if not selected_indices:
+        print("No valid selections. Running all methods by default.")
+        selected_indices = set(range(1, len(methods) + 1))
+
+    # Prompt batch_size and num_epochs only once if method 5 is selected
+    batch_size = None
+    num_epochs = None
+    if 5 in selected_indices:
+        batch_size = input_int_with_default("Enter BATCH_SIZE (default 4): ", 4)
+        num_epochs = input_int_with_default("Enter NUM_EPOCHS (default 10): ", 10)
+
+    for i in sorted(selected_indices):
+        method_script = os.path.join(methods_folder, methods[i - 1])
+        if not os.path.exists(method_script):
+            print(f"[WARNING] Script '{method_script}' not found.")
+            continue
+
+        print(f"\n--- Running: {method_script} ---")
 
         try:
-            subprocess.run(
-                ["python", method_script, batch_size, num_epochs],
-                check=True
-            )
+            if i == 5:
+                subprocess.run(
+                    ["python", method_script, str(batch_size), str(num_epochs)],
+                    check=True
+                )
+            else:
+                subprocess.run(["python", method_script], check=True)
         except subprocess.CalledProcessError as e:
             print(f"[ERROR] Script {method_script} failed with error: {e}")
 
-    else:
-        # For other methods just run without args (depth file handled internally)
-        try:
-            subprocess.run(["python", method_script], check=True)
-        except subprocess.CalledProcessError as e:
-            print(f"[ERROR] Script {method_script} failed with error: {e}")
+if __name__ == "__main__":
+    main()
