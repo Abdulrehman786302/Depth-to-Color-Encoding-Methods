@@ -63,7 +63,7 @@ This can significantly affect any data encoded into color channels.
 **Conclusion:**  
 🟢 LUV encoding **preserves depth better** under YUV420p compression than HSV.
 
----
+
 
 ### Summary
 
@@ -72,7 +72,7 @@ This can significantly affect any data encoded into color channels.
 | **HSV**  | ❌ Low                | Hue → Chroma (U/V)       | Easily distorted by chroma subsampling |
 | **LUV**  | ✅ High               | Lightness → Luma (Y)     | Depth survives compression much better |
 
-
+---
 ## Files & Methods Overview
 
 | Script Name           | Encoding Method    | Description                                  |
